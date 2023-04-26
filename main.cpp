@@ -21,7 +21,6 @@ int main() {
     ifstream myFile;
     myFile.open(fileName);
 
-    //getline(myFile, firstRow);
     getline(myFile, firstRow, ',');
     getline(myFile, firstRow, ',');
 
@@ -29,6 +28,12 @@ int main() {
         stringstream temp(firstRow);
         names.push_back(firstRow);
     }
+
+    myFile.close();
+
+    myFile.open(fileName);
+    getline(myFile, firstRow);
+
 
     while(getline(myFile, line))
     {
