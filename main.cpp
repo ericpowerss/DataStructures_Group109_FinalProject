@@ -435,9 +435,6 @@ int main() {
                           price_transportation_distillateFuelOil, price_transportation_petroleum,
                           price_transportation_naturalGas);
 
-        data.energyData.insert(make_pair(stateName, unordered_map<int, State>()));
-        data.energyData[stateName].insert(make_pair(year, stateObject));
-
 
         //For Loop to create a storage container for vector values of each energy type with its associative year.
         //Works but at 69 location the value zero turn to wrong number.
@@ -449,7 +446,7 @@ int main() {
         value.clear();
 
 
-    }
+    } //Testing for Quick Sort, need to make a UI that has the user input the energy type and year.
     sortData(data.sortedData, "Consumption_Commercial_Distillate Fuel Oil");
     for (const auto& stateData : data.sortedData) {
         if (stateData.second.count("Consumption_Commercial_Distillate Fuel Oil") == 0) {
