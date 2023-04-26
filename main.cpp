@@ -14,12 +14,21 @@ int main() {
     string fileName = "energy.csv";
     EnergyData data;
     string stateName;
+    vector<string> names;
+    vector<int> value;
 
 
     ifstream myFile;
     myFile.open(fileName);
 
-    getline(myFile, firstRow);
+    //getline(myFile, firstRow);
+    getline(myFile, firstRow, ',');
+    getline(myFile, firstRow, ',');
+
+    while(getline(myFile, firstRow, ',')){
+        stringstream temp(firstRow);
+        names.push_back(firstRow);
+    }
 
     while(getline(myFile, line))
     {
@@ -32,42 +41,55 @@ int main() {
 
         getline(sso, tempString, ',');
         auto production_coal = stoi(tempString);
+        value.push_back(production_coal);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_coal = stoi(tempString);
+        value.push_back(consumption_commercial_coal);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_distillateFuelOil = stoi(tempString);
+        value.push_back(consumption_commercial_distillateFuelOil);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_geothermal = stoi(tempString);
+        value.push_back(consumption_commercial_geothermal);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_hydropower = stoi(tempString);
+        value.push_back(consumption_commercial_hydropower);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_kerosene = stoi(tempString);
+        value.push_back(consumption_commercial_kerosene);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_petroleum = stoi(tempString);
+        value.push_back(consumption_commercial_petroleum);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_naturalGas = stoi(tempString);
+        value.push_back(consumption_commercial_naturalGas);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_solar = stoi(tempString);
+        value.push_back(consumption_commercial_solar);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_wind = stoi(tempString);
+        value.push_back(consumption_commercial_wind);
 
         getline(sso, tempString, ',');
         auto consumption_commercial_wood = stoi(tempString);
+        value.push_back(consumption_commercial_wood);
 
         getline(sso, tempString, ',');
         auto consumption_electricPower_coal = stoi(tempString);
+        value.push_back(consumption_electricPower_coal);
 
         getline(sso, tempString, ',');
         auto consumption_electricPower_distillateFuelOil = stoi(tempString);
+        value.push_back(consumption_electricPower_distillateFuelOil);
 
         getline(sso, tempString, ',');
         auto consumption_electricPower_naturalGas = stoi(tempString);
@@ -282,14 +304,24 @@ int main() {
         data.energyData[stateName].insert(make_pair(year, stateObject));
 
 
+        for(int i = 0; i < names.size(); i++){
 
+            data.sortedData.insert(make_pair(stateName, unordered_map<string, vector<pair<int, int>>>()));
+            data.sortedData[stateName].insert(make_pair(names[i], vector<pair<int, int>>()));
+            data.sortedData[stateName][names[i]].push_back(make_pair(year, names[i]));
+        }
 
+        data.sortedData.insert(make_pair(stateName, unordered_map<string, vector<pair<int, int>>>()));
+        data.sortedData[stateName].insert(make_pair("production_coal", vector<pair<int, int>>()));
+        data.sortedData[stateName]["production_coal"].push_back(make_pair(year, production_coal));
 
-
-
-
+        data.sortedData.insert(make_pair(stateName, unordered_map<string, vector<pair<int, int>>>()));
+        data.sortedData[stateName].insert(make_pair("consumption_commercial_coal", vector<pair<int, int>>()));
+        data.sortedData[stateName]["consumption_commercial_coal"].push_back(make_pair(year, consumption_commercial_coal));
 
     }
+
+
 
 
 
