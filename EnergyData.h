@@ -17,10 +17,11 @@ public:
     EnergyData(EnergyData& copy){
         sortedData = copy.sortedData;
     }
-    unordered_map<string, unordered_map<int, State>> energyData;
-    unordered_map<string, unordered_map<int, State>>::iterator it;
-    unordered_map<int, State>::iterator iter;
+//    unordered_map<string, unordered_map<int, State>> energyData;
+//    unordered_map<string, unordered_map<int, State>>::iterator it;
+//    unordered_map<int, State>::iterator iter;
 
+//     StateName,   EnergyType          Year,  Data
     map<string, map<string, vector<pair<int, float>>>> sortedData;
 };
 

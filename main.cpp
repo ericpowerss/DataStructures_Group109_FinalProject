@@ -1,9 +1,10 @@
 #include <iostream>
-#include <iostream>
+#include <chrono>
 #include <fstream>
 #include <string>
 #include <vector>
 #include <sstream>
+#include <algorithm>
 #include "EnergyData.h"
 
 using namespace std;
@@ -111,12 +112,13 @@ void timSort(vector<pair<int, float>>& data, int n){
 }
 
 int main() {
-    string item, line, firstRow, tempString;
+    string item, line, firstRow, tempString, stringOptionChoice;
     string fileName = "energy.csv";
     EnergyData data;
     string stateName;
     vector<string> names;
     vector<float> value;
+    int optionChoice;
 
 
     ifstream myFile;
@@ -478,35 +480,128 @@ int main() {
 
     }
 
-    string productionType;
-    cout << "Which energy type?" << endl;
-    cin >> productionType;
-    EnergyData Tim(data);
-    int r;
+    bool endMenu = true;
+    cout << "Welcome to the super awesome state energy sorter!" << endl;
+    while(endMenu)
+    {
 
-    for (auto &temp: Tim.sortedData) {
-        for (auto &innerMap: temp.second) {
-            if (innerMap.first == productionType) {
-                vector<pair<int, float>> &specificData = innerMap.second;
-                r = innerMap.second.size();
-                timSort(specificData, r);
+
+        cout << "Choose an option:" << endl;
+        cout << "1. Pick Energy Type" << endl;
+        cout << "2. Leave Program" << endl;
+        getline(cin, stringOptionChoice);
+
+        for (char c : stringOptionChoice) {
+            if (!isdigit(c)) {
+                stringOptionChoice = "4";
+                break;
             }
         }
+
+        optionChoice = stoi(stringOptionChoice);
+
+        if (optionChoice == 1)
+        {
+            string productionType;
+            cout << "Which energy type?" << endl;
+            getline(cin, productionType);
+            EnergyData Tim(data);
+            int r;
+
+            if (productionType == "State" || productionType == "Year")
+            {
+                cout << productionType << " is not a valid name." << endl;
+                continue;
+            }
+
+            auto it = find(names.begin(), names.end(), productionType);
+            if (it != names.end()) {
+                auto start1 = chrono::high_resolution_clock::now();
+                for (auto &temp: Tim.sortedData) {
+                    for (auto &innerMap: temp.second) {
+                        if (innerMap.first == productionType) {
+                            vector<pair<int, float>> &specificData = innerMap.second;
+                            r = innerMap.second.size();
+                            timSort(specificData, r);
+
+                            cout << temp.first << endl;
+                            cout << productionType << ": ";
+                            for (const auto& pair : specificData) {
+                                cout << "(" << pair.first << ", " << pair.second << ") ";
+                            }
+                        }
+                    }
+                    cout << endl;
+
+                }
+                auto end1 = chrono::high_resolution_clock::now();
+                auto duration1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1).count();
+
+
+                cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+
+
+
+                auto start2 = chrono::high_resolution_clock::now();
+                sortData(data.sortedData, productionType);
+
+                for (const auto& stateData : data.sortedData) {
+
+                    cout << stateData.first << endl;
+                    cout << productionType << ": ";
+                    for (const auto& value : stateData.second.at(productionType)) {
+                        cout << "(" << value.first << ", " << value.second << ") ";
+                    }
+                    cout << endl;
+                }
+
+                auto end2 = chrono::high_resolution_clock::now();
+                auto duration2 = chrono::duration_cast<chrono::milliseconds>(end2 - start2).count();
+
+                cout << "Quick sort elapsed time: " << duration1 << " ms" << std::endl;
+                cout << "Tim sort elapsed time: " << duration2 << " ms" << endl;
+            }
+
+            else {
+                cout << productionType << " is not a valid name." << endl;
+            }
+
+
+        }
+
+        else if (optionChoice == 2)
+        {
+            endMenu = false;
+            cout << "I hope you enjoyed this super awesome program!" << endl;
+        }
+
+        else if (optionChoice == 3)
+        {
+            EnergyData Tim(data);
+            auto start3 = chrono::high_resolution_clock::now();
+
+
+            for (auto &it: Tim.sortedData)
+            {
+                for (auto & temp2 : it.)
+            }
+
+
+
+
+            auto end3 = chrono::high_resolution_clock::now();
+            auto duration2 = chrono::duration_cast<chrono::milliseconds>(end3 - start3).count();
+        }
+
+        else
+        {
+            cout << "Please enter a valid option :)" << endl;
+        }
     }
 
 
 
-    sortData(data.sortedData, "Consumption_Commercial_Distillate Fuel Oil");
-    for (const auto& stateData : data.sortedData) {
-        if (stateData.second.count("Consumption_Commercial_Distillate Fuel Oil") == 0) {
-            continue;
-        }
-        cout << stateData.first << endl;
-        cout << "Consumption_Commercial_Distillate Fuel Oil" << ": ";
-        for (const auto& value : stateData.second.at("Consumption_Commercial_Distillate Fuel Oil")) {
-            cout << "(" << value.first << ", " << value.second << ") ";
-        }
-        cout << endl;
-    }
+
+
     return 0;
 }
