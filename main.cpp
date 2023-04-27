@@ -111,6 +111,39 @@ void timSort(vector<pair<int, float>>& data, int n){
     }
 }
 
+void printOptions(){
+    cout << "1: Production_Coal\n2: Consumption_Commercial_Coal\n3: Consumption_Commercial_Distillate Fuel Oil\n";
+    cout << "4: Consumption_Commercial_Geothermal\n5: Consumption_Commercial_Hydropower\n6: Consumption_Commercial_Kerosene\n";
+    cout << "7: Consumption_Commercial_Petroleum\n8: Consumption_Commercial_Natural Gas\n9: Consumption_Commercial_Solar\n";
+    cout << "10: Consumption_Commercial_Wind\n11: Consumption_Commercial_Wood\n12: Consumption_Electric Power_Coal\n";
+    cout << "13: Consumption_Electric Power_Distillate Fuel Oil\n14: Consumption_Electric Power_Natural Gas\n15: Consumption_Electric Power_Wood\n";
+    cout << "16: Consumption_Industrial_Coal\n17: Consumption_Industrial_Distillate Fuel Oil\n18: Consumption_Industrial_Geothermal\n";
+    cout << "19: Consumption_Industrial_Hydropower\n20: Consumption_Industrial_Kerosene\n21: Consumption_Industrial_Petroleum\n";
+    cout << "22: Consumption_Industrial_Natural Gas\n23: Consumption_Industrial_Other Petroleum Products\n24: Consumption_Industrial_Solar\n";
+    cout << "25: Consumption_Industrial_Wind\n26: Consumption_Industrial_Wood\n27: Consumption_Refinery_Coal\n";
+    cout << "28: Consumption_Refinery_Distillate Fuel Oil\n29: Consumption_Refinery_Natural Gas\n30: Consumption_Residential_Coal\n";
+    cout << "31: Consumption_Residential_Distillate Fuel Oil\n32: Consumption_Residential_Geothermal\n33: Consumption_Residential_Kerosene\n";
+    cout << "34: Consumption_Residential_Petroleum\n35: Consumption_Residential_Natural Gas\n36: Consumption_Residential_Wood\n";
+    cout << "37: Consumption_Transportation_Coal\n38: Consumption_Transportation_Distillate Fuel Oil\n39: Consumption_Transportation_Petroleum\n";
+    cout << "40: Consumption_Transportation_Natural Gas\n41: Expenditure_Commercial_Coal\n42: Expenditure_Commercial_Distillate Fuel Oil\n";
+    cout << "43: Expenditure_Commercial_Kerosene\n44: Expenditure_Commercial_Petroleum\n45: Expenditure_Commercial_Natural Gas\n";
+    cout << "46: Expenditure_Electric Power_Coal\n47: Expenditure_Electric Power_Distillate Fuel Oil\n48: Expenditure_Electric Power_Natural Gas\n";
+    cout << "49: Expenditure_Industrial_Coal\n50: Expenditure_Industrial_Distillate Fuel Oil\n51: Expenditure_Industrial_Kerosene\n";
+    cout << "52: Expenditure_Industrial_Petroleum\n53: Expenditure_Industrial_Natural Gas\n54: Expenditure_Industrial_Other Petroleum Products\n";
+    cout << "55: Expenditure_Residential_Coal\n56: Expenditure_Residential_Distillate Fuel Oil\n57: Expenditure_Residential_Kerosene\n";
+    cout << "58: Expenditure_Residential_Petroleum\n59: Expenditure_Residential_Natural Gas\n60: Expenditure_Residential_Wood\n";
+    cout << "61: Expenditure_Transportation_Coal\n62: Expenditure_Transportation_Distillate Fuel Oil\n63: Expenditure_Transportation_Petroleum\n";
+    cout << "64: Expenditure_Transportation_Natural Gas\n65: Price_Commercial_Coal\n66: Price_Commercial_Distillate Fuel Oil\n";
+    cout << "67: Price_Commercial_Kerosene\n68: Price_Commercial_Petroleum\n69: Price_Commercial_Natural Gas\n";
+    cout << "70: Price_Electric Power_Coal\n71: Price_Electric Power_Distillate Fuel Oil\n72: Price_Electric Power_Natural Gas\n";
+    cout << "73: Price_Industrial_Coal\n74: Price_Industrial_Distillate Fuel Oil\n75: Price_Industrial_Kerosene\n";
+    cout << "76: Price_Industrial_Petroleum\n77: Price_Industrial_Natural Gas\n78: Price_Industrial_Other Petroleum Products\n";
+    cout << "79: Price_Transportation_Coal\n80: Price_Transportation_Distillate Fuel Oil\n81: Price_Transportation_Petroleum\n";
+    cout << "82: Price_Transportation_Natural Gas\n";
+    cout << "Please enter the name of energy type as it appears, not the number in list." << endl;
+}
+
+
 int main() {
     string item, line, firstRow, tempString;
     string fileName = "energy.csv";
@@ -482,7 +515,6 @@ int main() {
     bool endMenu = true;
     cout << "Welcome to the super awesome state energy sorter!" << endl;
     while(endMenu){
-        string stringOption;
         int option = 0;
         string state;
         string state2;
@@ -502,8 +534,6 @@ int main() {
 
         cin >> option;
 
-
-
         if(option == 1) {
             while (true) {
                 cout << "Which state would you like to gather data on? (Please Capitalize the state.)" << endl;
@@ -518,35 +548,7 @@ int main() {
                     string energyType;
                     cout << "\n";
                     cout << "Which fuel source data would you like to see?" << endl;
-                    cout << "1: Production_Coal\n2: Consumption_Commercial_Coal\n3: Consumption_Commercial_Distillate Fuel Oil\n";
-                    cout << "4: Consumption_Commercial_Geothermal\n5: Consumption_Commercial_Hydropower\n6: Consumption_Commercial_Kerosene\n";
-                    cout << "7: Consumption_Commercial_Petroleum\n8: Consumption_Commercial_Natural Gas\n9: Consumption_Commercial_Solar\n";
-                    cout << "10: Consumption_Commercial_Wind\n11: Consumption_Commercial_Wood\n12: Consumption_Electric Power_Coal\n";
-                    cout << "13: Consumption_Electric Power_Distillate Fuel Oil\n14: Consumption_Electric Power_Natural Gas\n15: Consumption_Electric Power_Wood\n";
-                    cout << "16: Consumption_Industrial_Coal\n17: Consumption_Industrial_Distillate Fuel Oil\n18: Consumption_Industrial_Geothermal\n";
-                    cout << "19: Consumption_Industrial_Hydropower\n20: Consumption_Industrial_Kerosene\n21: Consumption_Industrial_Petroleum\n";
-                    cout << "22: Consumption_Industrial_Natural Gas\n23: Consumption_Industrial_Other Petroleum Products\n24: Consumption_Industrial_Solar\n";
-                    cout << "25: Consumption_Industrial_Wind\n26: Consumption_Industrial_Wood\n27: Consumption_Refinery_Coal\n";
-                    cout << "28: Consumption_Refinery_Distillate Fuel Oil\n29: Consumption_Refinery_Natural Gas\n30: Consumption_Residential_Coal\n";
-                    cout << "31: Consumption_Residential_Distillate Fuel Oil\n32: Consumption_Residential_Geothermal\n33: Consumption_Residential_Kerosene\n";
-                    cout << "34: Consumption_Residential_Petroleum\n35: Consumption_Residential_Natural Gas\n36: Consumption_Residential_Wood\n";
-                    cout << "37: Consumption_Transportation_Coal\n38: Consumption_Transportation_Distillate Fuel Oil\n39: Consumption_Transportation_Petroleum\n";
-                    cout << "40: Consumption_Transportation_Natural Gas\n41: Expenditure_Commercial_Coal\n42: Expenditure_Commercial_Distillate Fuel Oil\n";
-                    cout << "43: Expenditure_Commercial_Kerosene\n44: Expenditure_Commercial_Petroleum\n45: Expenditure_Commercial_Natural Gas\n";
-                    cout << "46: Expenditure_Electric Power_Coal\n47: Expenditure_Electric Power_Distillate Fuel Oil\n48: Expenditure_Electric Power_Natural Gas\n";
-                    cout << "49: Expenditure_Industrial_Coal\n50: Expenditure_Industrial_Distillate Fuel Oil\n51: Expenditure_Industrial_Kerosene\n";
-                    cout << "52: Expenditure_Industrial_Petroleum\n53: Expenditure_Industrial_Natural Gas\n54: Expenditure_Industrial_Other Petroleum Products\n";
-                    cout << "55: Expenditure_Residential_Coal\n56: Expenditure_Residential_Distillate Fuel Oil\n57: Expenditure_Residential_Kerosene\n";
-                    cout << "58: Expenditure_Residential_Petroleum\n59: Expenditure_Residential_Natural Gas\n60: Expenditure_Residential_Wood\n";
-                    cout << "61: Expenditure_Transportation_Coal\n62: Expenditure_Transportation_Distillate Fuel Oil\n63: Expenditure_Transportation_Petroleum\n";
-                    cout << "64: Expenditure_Transportation_Natural Gas\n65: Price_Commercial_Coal\n66: Price_Commercial_Distillate Fuel Oil\n";
-                    cout << "67: Price_Commercial_Kerosene\n68: Price_Commercial_Petroleum\n69: Price_Commercial_Natural Gas\n";
-                    cout << "70: Price_Electric Power_Coal\n71: Price_Electric Power_Distillate Fuel Oil\n72: Price_Electric Power_Natural Gas\n";
-                    cout << "73: Price_Industrial_Coal\n74: Price_Industrial_Distillate Fuel Oil\n75: Price_Industrial_Kerosene\n";
-                    cout << "76: Price_Industrial_Petroleum\n77: Price_Industrial_Natural Gas\n78: Price_Industrial_Other Petroleum Products\n";
-                    cout << "79: Price_Transportation_Coal\n80: Price_Transportation_Distillate Fuel Oil\n81: Price_Transportation_Petroleum\n";
-                    cout << "82: Price_Transportation_Natural Gas\n";
-                    cout << "Please enter the name of energy type as it appears, not the number in list." << endl;
+                    printOptions();
 
                     while(true){
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -617,35 +619,7 @@ int main() {
                     string energyType;
                     cout << "\n";
                     cout << "Which fuel source data would you like to see?" << endl;
-                    cout << "1: Production_Coal\n2: Consumption_Commercial_Coal\n3: Consumption_Commercial_Distillate Fuel Oil\n";
-                    cout << "4: Consumption_Commercial_Geothermal\n5: Consumption_Commercial_Hydropower\n6: Consumption_Commercial_Kerosene\n";
-                    cout << "7: Consumption_Commercial_Petroleum\n8: Consumption_Commercial_Natural Gas\n9: Consumption_Commercial_Solar\n";
-                    cout << "10: Consumption_Commercial_Wind\n11: Consumption_Commercial_Wood\n12: Consumption_Electric Power_Coal\n";
-                    cout << "13: Consumption_Electric Power_Distillate Fuel Oil\n14: Consumption_Electric Power_Natural Gas\n15: Consumption_Electric Power_Wood\n";
-                    cout << "16: Consumption_Industrial_Coal\n17: Consumption_Industrial_Distillate Fuel Oil\n18: Consumption_Industrial_Geothermal\n";
-                    cout << "19: Consumption_Industrial_Hydropower\n20: Consumption_Industrial_Kerosene\n21: Consumption_Industrial_Petroleum\n";
-                    cout << "22: Consumption_Industrial_Natural Gas\n23: Consumption_Industrial_Other Petroleum Products\n24: Consumption_Industrial_Solar\n";
-                    cout << "25: Consumption_Industrial_Wind\n26: Consumption_Industrial_Wood\n27: Consumption_Refinery_Coal\n";
-                    cout << "28: Consumption_Refinery_Distillate Fuel Oil\n29: Consumption_Refinery_Natural Gas\n30: Consumption_Residential_Coal\n";
-                    cout << "31: Consumption_Residential_Distillate Fuel Oil\n32: Consumption_Residential_Geothermal\n33: Consumption_Residential_Kerosene\n";
-                    cout << "34: Consumption_Residential_Petroleum\n35: Consumption_Residential_Natural Gas\n36: Consumption_Residential_Wood\n";
-                    cout << "37: Consumption_Transportation_Coal\n38: Consumption_Transportation_Distillate Fuel Oil\n39: Consumption_Transportation_Petroleum\n";
-                    cout << "40: Consumption_Transportation_Natural Gas\n41: Expenditure_Commercial_Coal\n42: Expenditure_Commercial_Distillate Fuel Oil\n";
-                    cout << "43: Expenditure_Commercial_Kerosene\n44: Expenditure_Commercial_Petroleum\n45: Expenditure_Commercial_Natural Gas\n";
-                    cout << "46: Expenditure_Electric Power_Coal\n47: Expenditure_Electric Power_Distillate Fuel Oil\n48: Expenditure_Electric Power_Natural Gas\n";
-                    cout << "49: Expenditure_Industrial_Coal\n50: Expenditure_Industrial_Distillate Fuel Oil\n51: Expenditure_Industrial_Kerosene\n";
-                    cout << "52: Expenditure_Industrial_Petroleum\n53: Expenditure_Industrial_Natural Gas\n54: Expenditure_Industrial_Other Petroleum Products\n";
-                    cout << "55: Expenditure_Residential_Coal\n56: Expenditure_Residential_Distillate Fuel Oil\n57: Expenditure_Residential_Kerosene\n";
-                    cout << "58: Expenditure_Residential_Petroleum\n59: Expenditure_Residential_Natural Gas\n60: Expenditure_Residential_Wood\n";
-                    cout << "61: Expenditure_Transportation_Coal\n62: Expenditure_Transportation_Distillate Fuel Oil\n63: Expenditure_Transportation_Petroleum\n";
-                    cout << "64: Expenditure_Transportation_Natural Gas\n65: Price_Commercial_Coal\n66: Price_Commercial_Distillate Fuel Oil\n";
-                    cout << "67: Price_Commercial_Kerosene\n68: Price_Commercial_Petroleum\n69: Price_Commercial_Natural Gas\n";
-                    cout << "70: Price_Electric Power_Coal\n71: Price_Electric Power_Distillate Fuel Oil\n72: Price_Electric Power_Natural Gas\n";
-                    cout << "73: Price_Industrial_Coal\n74: Price_Industrial_Distillate Fuel Oil\n75: Price_Industrial_Kerosene\n";
-                    cout << "76: Price_Industrial_Petroleum\n77: Price_Industrial_Natural Gas\n78: Price_Industrial_Other Petroleum Products\n";
-                    cout << "79: Price_Transportation_Coal\n80: Price_Transportation_Distillate Fuel Oil\n81: Price_Transportation_Petroleum\n";
-                    cout << "82: Price_Transportation_Natural Gas\n";
-                    cout << "Please enter the name of energy type as it appears, not the number in list." << endl;
+                    printOptions();
 
                     while(true){
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -708,35 +682,7 @@ int main() {
                     string energyType2;
                     cout << "\n";
                     cout << "Which fuel source data would you like to see?" << endl;
-                    cout << "1: Production_Coal\n2: Consumption_Commercial_Coal\n3: Consumption_Commercial_Distillate Fuel Oil\n";
-                    cout << "4: Consumption_Commercial_Geothermal\n5: Consumption_Commercial_Hydropower\n6: Consumption_Commercial_Kerosene\n";
-                    cout << "7: Consumption_Commercial_Petroleum\n8: Consumption_Commercial_Natural Gas\n9: Consumption_Commercial_Solar\n";
-                    cout << "10: Consumption_Commercial_Wind\n11: Consumption_Commercial_Wood\n12: Consumption_Electric Power_Coal\n";
-                    cout << "13: Consumption_Electric Power_Distillate Fuel Oil\n14: Consumption_Electric Power_Natural Gas\n15: Consumption_Electric Power_Wood\n";
-                    cout << "16: Consumption_Industrial_Coal\n17: Consumption_Industrial_Distillate Fuel Oil\n18: Consumption_Industrial_Geothermal\n";
-                    cout << "19: Consumption_Industrial_Hydropower\n20: Consumption_Industrial_Kerosene\n21: Consumption_Industrial_Petroleum\n";
-                    cout << "22: Consumption_Industrial_Natural Gas\n23: Consumption_Industrial_Other Petroleum Products\n24: Consumption_Industrial_Solar\n";
-                    cout << "25: Consumption_Industrial_Wind\n26: Consumption_Industrial_Wood\n27: Consumption_Refinery_Coal\n";
-                    cout << "28: Consumption_Refinery_Distillate Fuel Oil\n29: Consumption_Refinery_Natural Gas\n30: Consumption_Residential_Coal\n";
-                    cout << "31: Consumption_Residential_Distillate Fuel Oil\n32: Consumption_Residential_Geothermal\n33: Consumption_Residential_Kerosene\n";
-                    cout << "34: Consumption_Residential_Petroleum\n35: Consumption_Residential_Natural Gas\n36: Consumption_Residential_Wood\n";
-                    cout << "37: Consumption_Transportation_Coal\n38: Consumption_Transportation_Distillate Fuel Oil\n39: Consumption_Transportation_Petroleum\n";
-                    cout << "40: Consumption_Transportation_Natural Gas\n41: Expenditure_Commercial_Coal\n42: Expenditure_Commercial_Distillate Fuel Oil\n";
-                    cout << "43: Expenditure_Commercial_Kerosene\n44: Expenditure_Commercial_Petroleum\n45: Expenditure_Commercial_Natural Gas\n";
-                    cout << "46: Expenditure_Electric Power_Coal\n47: Expenditure_Electric Power_Distillate Fuel Oil\n48: Expenditure_Electric Power_Natural Gas\n";
-                    cout << "49: Expenditure_Industrial_Coal\n50: Expenditure_Industrial_Distillate Fuel Oil\n51: Expenditure_Industrial_Kerosene\n";
-                    cout << "52: Expenditure_Industrial_Petroleum\n53: Expenditure_Industrial_Natural Gas\n54: Expenditure_Industrial_Other Petroleum Products\n";
-                    cout << "55: Expenditure_Residential_Coal\n56: Expenditure_Residential_Distillate Fuel Oil\n57: Expenditure_Residential_Kerosene\n";
-                    cout << "58: Expenditure_Residential_Petroleum\n59: Expenditure_Residential_Natural Gas\n60: Expenditure_Residential_Wood\n";
-                    cout << "61: Expenditure_Transportation_Coal\n62: Expenditure_Transportation_Distillate Fuel Oil\n63: Expenditure_Transportation_Petroleum\n";
-                    cout << "64: Expenditure_Transportation_Natural Gas\n65: Price_Commercial_Coal\n66: Price_Commercial_Distillate Fuel Oil\n";
-                    cout << "67: Price_Commercial_Kerosene\n68: Price_Commercial_Petroleum\n69: Price_Commercial_Natural Gas\n";
-                    cout << "70: Price_Electric Power_Coal\n71: Price_Electric Power_Distillate Fuel Oil\n72: Price_Electric Power_Natural Gas\n";
-                    cout << "73: Price_Industrial_Coal\n74: Price_Industrial_Distillate Fuel Oil\n75: Price_Industrial_Kerosene\n";
-                    cout << "76: Price_Industrial_Petroleum\n77: Price_Industrial_Natural Gas\n78: Price_Industrial_Other Petroleum Products\n";
-                    cout << "79: Price_Transportation_Coal\n80: Price_Transportation_Distillate Fuel Oil\n81: Price_Transportation_Petroleum\n";
-                    cout << "82: Price_Transportation_Natural Gas\n";
-                    cout << "Please enter the name of energy type as it appears, not the number in list." << endl;
+                    printOptions();
 
                     while(true){
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -802,42 +748,12 @@ int main() {
             }
         }
 
-
-
         else if (option == 4){
 
             string productionType = "";
             cin.ignore();
             cout << "Which fuel source data would you like to see?" << endl;
-            cout << "1: Production_Coal\n2: Consumption_Commercial_Coal\n3: Consumption_Commercial_Distillate Fuel Oil\n";
-            cout << "4: Consumption_Commercial_Geothermal\n5: Consumption_Commercial_Hydropower\n6: Consumption_Commercial_Kerosene\n";
-            cout << "7: Consumption_Commercial_Petroleum\n8: Consumption_Commercial_Natural Gas\n9: Consumption_Commercial_Solar\n";
-            cout << "10: Consumption_Commercial_Wind\n11: Consumption_Commercial_Wood\n12: Consumption_Electric Power_Coal\n";
-            cout << "13: Consumption_Electric Power_Distillate Fuel Oil\n14: Consumption_Electric Power_Natural Gas\n15: Consumption_Electric Power_Wood\n";
-            cout << "16: Consumption_Industrial_Coal\n17: Consumption_Industrial_Distillate Fuel Oil\n18: Consumption_Industrial_Geothermal\n";
-            cout << "19: Consumption_Industrial_Hydropower\n20: Consumption_Industrial_Kerosene\n21: Consumption_Industrial_Petroleum\n";
-            cout << "22: Consumption_Industrial_Natural Gas\n23: Consumption_Industrial_Other Petroleum Products\n24: Consumption_Industrial_Solar\n";
-            cout << "25: Consumption_Industrial_Wind\n26: Consumption_Industrial_Wood\n27: Consumption_Refinery_Coal\n";
-            cout << "28: Consumption_Refinery_Distillate Fuel Oil\n29: Consumption_Refinery_Natural Gas\n30: Consumption_Residential_Coal\n";
-            cout << "31: Consumption_Residential_Distillate Fuel Oil\n32: Consumption_Residential_Geothermal\n33: Consumption_Residential_Kerosene\n";
-            cout << "34: Consumption_Residential_Petroleum\n35: Consumption_Residential_Natural Gas\n36: Consumption_Residential_Wood\n";
-            cout << "37: Consumption_Transportation_Coal\n38: Consumption_Transportation_Distillate Fuel Oil\n39: Consumption_Transportation_Petroleum\n";
-            cout << "40: Consumption_Transportation_Natural Gas\n41: Expenditure_Commercial_Coal\n42: Expenditure_Commercial_Distillate Fuel Oil\n";
-            cout << "43: Expenditure_Commercial_Kerosene\n44: Expenditure_Commercial_Petroleum\n45: Expenditure_Commercial_Natural Gas\n";
-            cout << "46: Expenditure_Electric Power_Coal\n47: Expenditure_Electric Power_Distillate Fuel Oil\n48: Expenditure_Electric Power_Natural Gas\n";
-            cout << "49: Expenditure_Industrial_Coal\n50: Expenditure_Industrial_Distillate Fuel Oil\n51: Expenditure_Industrial_Kerosene\n";
-            cout << "52: Expenditure_Industrial_Petroleum\n53: Expenditure_Industrial_Natural Gas\n54: Expenditure_Industrial_Other Petroleum Products\n";
-            cout << "55: Expenditure_Residential_Coal\n56: Expenditure_Residential_Distillate Fuel Oil\n57: Expenditure_Residential_Kerosene\n";
-            cout << "58: Expenditure_Residential_Petroleum\n59: Expenditure_Residential_Natural Gas\n60: Expenditure_Residential_Wood\n";
-            cout << "61: Expenditure_Transportation_Coal\n62: Expenditure_Transportation_Distillate Fuel Oil\n63: Expenditure_Transportation_Petroleum\n";
-            cout << "64: Expenditure_Transportation_Natural Gas\n65: Price_Commercial_Coal\n66: Price_Commercial_Distillate Fuel Oil\n";
-            cout << "67: Price_Commercial_Kerosene\n68: Price_Commercial_Petroleum\n69: Price_Commercial_Natural Gas\n";
-            cout << "70: Price_Electric Power_Coal\n71: Price_Electric Power_Distillate Fuel Oil\n72: Price_Electric Power_Natural Gas\n";
-            cout << "73: Price_Industrial_Coal\n74: Price_Industrial_Distillate Fuel Oil\n75: Price_Industrial_Kerosene\n";
-            cout << "76: Price_Industrial_Petroleum\n77: Price_Industrial_Natural Gas\n78: Price_Industrial_Other Petroleum Products\n";
-            cout << "79: Price_Transportation_Coal\n80: Price_Transportation_Distillate Fuel Oil\n81: Price_Transportation_Petroleum\n";
-            cout << "82: Price_Transportation_Natural Gas\n";
-            cout << "Please enter the name of energy type as it appears, not the number in list." << endl;
+            printOptions();
 
             getline(cin, productionType);
             EnergyData Tim(data);
@@ -869,13 +785,11 @@ int main() {
                     cout << endl;
 
                 }
+
                 auto end1 = chrono::high_resolution_clock::now();
                 auto duration1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1).count();
 
-
                 cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
-
-
 
                 auto start2 = chrono::high_resolution_clock::now();
                 sortData(data.sortedData, productionType);
@@ -902,10 +816,7 @@ int main() {
                 cout << productionType << " is not a valid name." << endl;
             }
 
-
-
         }
-
 
         else if (option == 5)
         {
@@ -915,13 +826,12 @@ int main() {
 
         else
         {
+
             cout << "Please enter a valid option choice." << endl;
-            break;
+
         }
 
-
     }
-
 
     return 0;
 }
