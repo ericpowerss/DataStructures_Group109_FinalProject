@@ -481,8 +481,7 @@ int main() {
 
     bool endMenu = true;
     cout << "Welcome to the super awesome state energy sorter!" << endl;
-    while(endMenu)
-    {
+    while(endMenu){
         string stringOption;
         int option = 0;
         string state;
@@ -501,18 +500,9 @@ int main() {
         cout << "4: Compare Tim sort with Quick sort with execution time." << endl;
         cout << "5: Exit Program." << endl;
 
+        cin >> option;
 
-        getline(cin, stringOption);
 
-        for (char c : stringOption) {
-            if (!isdigit(c)) {
-                stringOption = "6";
-                break;
-            }
-        }
-
-        option = stoi(stringOption);
-        cout << "\n";
 
         if(option == 1) {
             while (true) {
@@ -559,57 +549,57 @@ int main() {
                     cout << "Please enter the name of energy type as it appears, not the number in list." << endl;
 
                     while(true){
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    getline(cin, energyType);
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        getline(cin, energyType);
 
-                    for(int i = 0; i < names.size(); i++){
-                        if(names[i] == energyType){
-                            validEnergyType = true;
+                        for(int i = 0; i < names.size(); i++){
+                            if(names[i] == energyType){
+                                validEnergyType = true;
+                            }
                         }
-                    }
 
-                    if(validEnergyType){
-                        int year;
-                        while(keepGoing) {
-                            cout << "\n";
-                            cout << "Please enter the year you wish to view. This data base starts from 1960 till 2019." << endl;
-                            cin >> year;
-                            if (year >= 1960 && year <= 2019) {
-                                sortData(data.sortedData, energyType);
-                                for(auto& look : data.sortedData){
-                                    for(auto& search : look.second){
-                                        if(look.first == state && search.first == energyType){
-                                            float temp = 0;
-                                            for(auto& find : search.second){
-                                                if(find.first == year){
-                                                    temp = find.second;
+                        if(validEnergyType){
+                            int year;
+                            while(keepGoing) {
+                                cout << "\n";
+                                cout << "Please enter the year you wish to view. This data base starts from 1960 till 2019." << endl;
+                                cin >> year;
+                                if (year >= 1960 && year <= 2019) {
+                                    sortData(data.sortedData, energyType);
+                                    for(auto& look : data.sortedData){
+                                        for(auto& search : look.second){
+                                            if(look.first == state && search.first == energyType){
+                                                float temp = 0;
+                                                for(auto& find : search.second){
+                                                    if(find.first == year){
+                                                        temp = find.second;
+                                                    }
                                                 }
+                                                cout << state << " " << energyType << " "<< year << ": " << temp << endl;
+                                                keepGoing = !keepGoing;
                                             }
-                                            cout << state << " " << energyType << " "<< year << ": " << temp << endl;
-                                            keepGoing = !keepGoing;
                                         }
                                     }
+                                } else {
+                                    cout << "The year you've entered is invalid and is out of the scope of this data base." << endl;
+                                    continue;
                                 }
-                            } else {
-                                cout << "The year you've entered is invalid and is out of the scope of this data base." << endl;
-                                continue;
+
                             }
 
                         }
-
-                    }
-                    else if(!validEnergyType){
-                        cout << "The fuel source data you've entered is invalid. Please enter the fuel source exact as seen above with underscores and capitalization.\n" "You must press enter before entering another fuel source." << endl;
-                        continue;
-                    }
-
+                        else if(!validEnergyType){
+                            cout << "The fuel source data you've entered is invalid. Please enter the fuel source exact as seen above with underscores and capitalization.\n" "You must press enter before entering another fuel source." << endl;
+                            continue;
+                        }
+                        break;
                     }
 
                 } else if (!validStateName) {
                     cout << "The state name you've enter is invalid. Please enter the state you which to see with proper spacing and capitalization." << endl;
                     continue;
                 }
-
+                break;
             }
         }
 
@@ -674,23 +664,25 @@ int main() {
                                 for (auto& second : first.second){
                                     for(auto& third : second.second){
                                         if(second.first == energyType && first.first == state)
-                                        temp += third.second;
+                                            temp += third.second;
                                     }
                                 }
                             }
 
-                            cout << "The average data for " << energyType << " in " << state << " is " << temp/60.0;
-
+                            cout << "The average data for " << energyType << " in " << state << " is " << temp/60.0 << endl;
+                            cout << "\n";
                         }
                         else if(!validEnergyType){
                             cout << "The fuel source data you've entered is invalid. Please enter the fuel source exact as seen above with underscores and capitalization.\n" "You must press enter before entering another fuel source." << endl;
                             continue;
                         }
+                        break;
                     }
                 } else if (!validStateName) {
                     cout << "The state name you've enter is invalid. Please enter the state you which to see with proper spacing and capitalization." << endl;
                     continue;
                 }
+                break;
             }
         }
 
@@ -792,26 +784,27 @@ int main() {
                                     cout << "The year you've entered is invalid and is out of the scope of this data base." << endl;
                                     continue;
                                 }
+                                break;
                             }
                         }
                         else if(!validEnergyType){
                             cout << "The fuel source data you've entered is invalid. Please enter the fuel source exact as seen above with underscores and capitalization.\n" "You must press enter before entering another fuel source." << endl;
                             continue;
                         }
+                        break;
                     }
                 } else if (!validStateName) {
                     cout << "The state name you've enter is invalid. Please enter the state you which to see with proper spacing and capitalization." << endl;
                     continue;
                 }
+                cout << "\n";
+                break;
             }
         }
 
 
 
-        // This is what you need to implement into option 4.
-
-        else if (option == 4)
-        {
+        else if (option == 4){
 
             string productionType;
             cout << "Which fuel source data would you like to see?" << endl;
@@ -922,6 +915,7 @@ int main() {
         else
         {
             cout << "Please enter a valid option choice." << endl;
+            break;
         }
 
 
