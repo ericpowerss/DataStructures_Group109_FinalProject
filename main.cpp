@@ -29,14 +29,14 @@ void quickSort(vector<pair<int, float>>& data, int left, int right) {
     }
 }
 void sortData(map<string, map<string, vector<pair<int, float>>>>& sortedData, const string& productionType) {
-    for (auto& stateData : sortedData) {
-        for (auto& typeData : stateData.second) {
-            if (typeData.first == productionType) {
-                vector<pair<int, float>>& data = typeData.second;
-                quickSort(data, 0, data.size() - 1);
-            }
-        }
-    }
+for (auto& stateData : sortedData) {
+for (auto& typeData : stateData.second) {
+if (typeData.first == productionType) {
+vector<pair<int, float>>& data = typeData.second;
+quickSort(data, 0, data.size() - 1);
+}
+}
+}
 }
 
 void insertionSort(vector<pair<int, float>>& data, int left, int right){
@@ -150,7 +150,7 @@ int main() {
     EnergyData data;
     string stateName;
     vector<string> names;
-    vector<string> validStateNames {"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"};
+    vector<string> validStateNames {"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District_of_Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Nebraska", "Nevada", "New_Hampshire", "New_Jersey", "New_Mexico", "New_York", "North_Carolina", "North_Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode_Island", "South_Carolina", "South_Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West_Virginia", "Wisconsin", "Wyoming"};
     vector<float> value;
 
     ifstream myFile;
@@ -536,7 +536,7 @@ int main() {
 
         if(option == 1) {
             while (true) {
-                cout << "Which state would you like to gather data on? (Please Capitalize the state.)" << endl;
+                cout << "Which state would you like to gather data on? (Please Capitalize the state and if there's a space use underscore.)" << endl;
                 cin >> state;
 
                 for (int i = 0; i < validStateNames.size(); i++) {
@@ -607,7 +607,7 @@ int main() {
 
         else if(option == 2){
             while (true) {
-                cout << "Which state would you like to gather data on? (Please Capitalize the state.)" << endl;
+                cout << "Which state would you like to gather data on? (Please Capitalize the state and if there's a space use underscore..)" << endl;
                 cin >> state;
 
                 for (int i = 0; i < validStateNames.size(); i++) {
@@ -662,11 +662,11 @@ int main() {
 
         else if(option == 3){
             while (true) {
-                cout << "Which first state would you like to gather data on and compare? (Please Capitalize the state.)" << endl;
+                cout << "Which first state would you like to gather data on and compare? (Please Capitalize the state and if there's a space use underscore..)" << endl;
                 cin >> state;
 
                 cout << "\n";
-                cout << "Which second state would you like to gather data on and compare? (Please Capitalize the state.)" << endl;
+                cout << "Which second state would you like to gather data on and compare? (Please Capitalize the state and if there's a space use underscore..)" << endl;
                 cin >> state2;
 
                 for (int i = 0; i < validStateNames.size(); i++) {
